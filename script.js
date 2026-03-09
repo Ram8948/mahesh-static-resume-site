@@ -39,6 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+    // Scroll progress bar logic
+    window.addEventListener('scroll', () => {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercent = (scrollTop / scrollHeight) * 100;
+        const progressBar = document.querySelector('.scroll-progress');
+        if (progressBar) {
+            progressBar.style.width = scrollPercent + '%';
+        }
+    });
+
     // Hero orbit interactive effect (slow down on hover)
     const orbitIcons = document.querySelectorAll('.orbiting-icon');
     const orbitContainer = document.querySelector('.orbit-container');
@@ -57,9 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Dynamic color shifting for the "SG" logo counterpart (RT)
+    // Dynamic color shifting for the logo
     const logoBox = document.querySelector('.logo-box');
-    const colors = ['#a388ee', '#eeff5f', '#ff88d2'];
+    const colors = ['#58a6ff', '#8250df', '#f0f6fc'];
     let currentColorIndex = 0;
 
     if (logoBox) {
