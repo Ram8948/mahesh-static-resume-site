@@ -35,27 +35,29 @@ body {
 body::before {
     content: '';
     position: fixed;
-    top: 10%;
-    left: -10%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
-    filter: blur(100px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('assets/topo-bg.png') no-repeat center center fixed;
+    background-size: cover;
     opacity: 0.15;
-    z-index: -1;
+    z-index: -2;
 }
 
 body::after {
     content: '';
     position: fixed;
-    bottom: 10%;
-    right: -10%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, var(--accent-indigo) 0%, transparent 70%);
-    filter: blur(100px);
-    opacity: 0.15;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 2px 2px, rgba(88, 166, 255, 0.08) 1px, transparent 0);
+    background-size: 40px 40px;
+    opacity: 0.4;
     z-index: -1;
+    pointer-events: none;
 }
 
 .container {
@@ -227,8 +229,23 @@ body::after {
     font-size: 4.5rem;
     line-height: 1.1;
     font-weight: 800;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
     letter-spacing: -1.5px;
+    position: relative;
+}
+
+.hero-title::after {
+    content: "LAT: 18.5590° N | LONG: 73.7785° E";
+    /* Coordinates for Baner, Pune */
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    font-size: 0.8rem;
+    color: var(--accent-blue);
+    font-family: monospace;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    font-weight: 400;
 }
 
 .highlight {
@@ -454,6 +471,38 @@ section {
 .card p {
     color: var(--text-secondary);
     font-size: 1rem;
+}
+
+.highlight-card {
+    border-bottom: 4px solid var(--accent-blue);
+    background: linear-gradient(180deg, var(--glass-bg) 0%, rgba(88, 166, 255, 0.05) 100%);
+}
+
+.spatial-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.spatial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle at top right, rgba(88, 166, 255, 0.1), transparent);
+    pointer-events: none;
+}
+
+.card-meta {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--glass-border);
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
 /* SKILLS */
