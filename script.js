@@ -79,4 +79,38 @@ document.addEventListener('DOMContentLoaded', () => {
             logoBox.style.backgroundColor = colors[currentColorIndex];
         });
     }
+
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinksContainer = document.querySelector('.nav-links');
+    const navLinksItems = document.querySelectorAll('.nav-links a');
+
+    if (menuToggle && navLinksContainer) {
+        menuToggle.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+
+            // Change icon based on state
+            const icon = menuToggle.querySelector('i');
+            if (navLinksContainer.classList.contains('active')) {
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        });
+
+        // Close menu when a link is clicked
+        navLinksItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinksContainer.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.setAttribute('data-lucide', 'menu');
+                if (window.lucide) {
+                    window.lucide.createIcons();
+                }
+            });
+        });
+    }
 });
